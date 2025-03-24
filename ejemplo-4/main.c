@@ -5,6 +5,7 @@
 
 //rax  	rdi, rsi
 int sumar (int, int);
+int restar (int, int);
 
 int main(int numeroParametros, char ** argumentos){
 
@@ -15,6 +16,9 @@ int main(int numeroParametros, char ** argumentos){
 	printf("El numero de parametros de la linea de comandos fue %d\r\n", numeroParametros );
 	resultado = sumar(numero1, numero2);
 	printf("la suma de %d y %d es %d \r\n", numero1, numero2, resultado);
+
+	resultado = restar(numero1, numero2);
+	printf("La Resta De %d y %d es %d \r\n", numero1, numero2, resultado);
 
 	return(EXIT_SUCCESS);
 
