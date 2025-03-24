@@ -26,7 +26,7 @@ _start:
 
 	# Llamar A La Función De Division
 
-	mov $10, %rdi  # a = 12
+	mov $12, %rdi  # a = 12
 	mov $3,  %rsi  # b = 3
 
 	call dividir
