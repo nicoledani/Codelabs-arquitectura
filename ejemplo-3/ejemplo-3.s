@@ -1,4 +1,4 @@
-
+#Programa que ilustra al uso de convencion de llamadas de System V
 .data
 
 mensaje: .asciz "Numero1 %d Numero2 %d \r\n"
@@ -9,7 +9,7 @@ mensaje: .asciz "Numero1 %d Numero2 %d \r\n"
 
 main:
 _start:
-
+        subq $8, %rsp   #Alineamos los datos
 
 	mov $4, %rax
 	mov $5, %rbx
@@ -18,7 +18,13 @@ _start:
 	movq %rax, %rsi
 	movq %rbx, %rdx
 
-	call imprimir
+	# RAX se pone en 0 para indicar que necesitamos 0 registros de punto flotante
+        movq $0, %rax   #rax=0 toca memoria
+        xorq %rax, %rax #rax=0 no toca memoria
+
+        call printf
+
+        addq $8, %rsp
 
 	call salir
 
@@ -27,19 +33,4 @@ salir:
         mov $60, %rax
         mov $0, %rdi
         syscall
-	ret
-
-#funcion que imprime enteros en consola
-imprimir:
-
-	subq $8, %rsp   #Alineamos los datos
-
-	# RAX se pone en 0 para indicar que necesitamos 0 registros de punto flotante
-	movq $0, %rax	#rax=0 toca memoria
-	xorq %rax, %rax	#rax=0 no toca memoria
-
-	call printf
-
-	addq $8, %rsp
-
 	ret
